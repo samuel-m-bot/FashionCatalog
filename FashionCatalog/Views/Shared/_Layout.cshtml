@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FashionCatalog</title>
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+    <link rel="stylesheet" href="~/css/mycsstheme.css"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FashionCatalog.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">Fashion Catalog</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/">
+                                Home
+                                <span class="visually-hidden">(current)</span>
+                            </a>
+                        </li>
+                        @*<li class="nav-item">
+                            <a class="nav-link" href="#">Register</a>
+                        </li>*@
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Men</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/men">All Clothing</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/men/t-shirts">T-shirts</a>
+                                <a class="dropdown-item" href="/men/hoodies">Hoodies</a>
+                                <a class="dropdown-item" href="/men/trousers/cargos">Cargos</a>
+                                <a class="dropdown-item" href="/men/shirts">Shirts</a>
+                                <a class="dropdown-item" href="/men/trousers">Trousers</a>
+                                <a class="dropdown-item" href="/men/jeans">Jeans</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Women</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/women">All Clothing</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/women/dresses">Dresses</a>
+                                <a class="dropdown-item" href="/women/tops">Tops</a>
+                                <a class="dropdown-item" href="/women/coats-jackets">Coats/Jackets</a>
+                                <a class="dropdown-item" href="/women/trousers">Trousers</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="account-info">
+                        <partial name="_LoginPartial" />
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - FashionCatalog - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @*<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

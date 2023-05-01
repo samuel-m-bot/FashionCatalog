@@ -1,0 +1,132 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "t_shirts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+    <script>
+        var scrollToTopBtn = document.getElementById("scroll-to-top-btn");
+
+        window.addEventListener("scroll", function () {
+            if (window.pageYOffset > 100) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        });
+
+        scrollToTopBtn.addEventListener("click", function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+        $(document).ready(function () {
+            var skip = 40; // initial number of products to skip
+            var take = 40; // number of products to take per batch
+            var total = 40;
+            if (@ViewBag.TotalCount<= total) $('#load-more-btn').hide();
+            // Load more button click event handler
+            $('#load-more-btn').on('click', function () {
+                // Make an AJAX request to fetch more products with the selected filters
+                var store = $('#store-select').val();
+                var price = $('#price-select').val();
+
+                $.ajax({
+                    url: '/men/GetProducts', // URL of your action method
+                    type: 'GET',
+                    data: {
+                        skip: skip,
+                        take: take,
+                        category: "t-shirts",
+                        store: store,
+                        price: price
+                    },
+                    success: function (data) {
+
+                        // Append the fetched products to the last row
+                        $('.row:last-child').append(data);
+
+                        $.ajax({
+                            url: '/men/GetProductsList', // URL of your action method
+                            type: 'GET',
+                            data: {
+                                skip: skip,
+                                take: take,
+                                category: "t-shirts",
+                                store: store,
+                                price: price
+                            },
+                            success: function (data) {
+                                skip += take; // increment skip for next batch
+                                if (data[1] < take) {
+                                    $('#load-more-btn').hide();
+                                } else {
+                                    $('#load-more-btn').text('Load More').prop('disabled', false);
+                                }
+                                total += data[1];
+                                $('#product-count').text(total);
+                                $('#product-total').text(data[0]);
+                            },
+                            error: function (xhr, textStatus, errorThrown) {
+                                console.log('Error: ' + textStatus + ' ' + errorThrown);
+                            }
+                        });
+
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.log('Error: ' + textStatus + ' ' + errorThrown);
+                    }
+                });
+            });
+
+            // Apply Filter button click event handler
+            $('#apply-filter-btn').on('click', function () {
+                // Reset skip to 0 when applying filters
+                skip = 0;
+                total = 0;
+                $('#product-row').empty(); // Clear existing products in the product list container
+                $('#load-more-btn').show(); // Show the "Load More" button
+                $('#load-more-btn').trigger('click'); // Trigger Load More button click to fetch products with filters
+            });
+        });
+    </script>
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h1 class="page-heading">Men T-shirts</h1>
+    <div class="filter-options">
+        <label for="store-select">Store:</label>
+        <select id="store-select">
+            <option value="">All</option>
+            <option value="boohoo">boohoo</option>
+            <option value="Uniqlo">Uniqlo</option>
+            <!-- Add more options for your stores -->
+        </select>
+        <label for="price-select">Price:</label>
+        <select id="price-select">
+            <option value="">All</option>
+            <option value="lowToHigh">Low to High</option>
+            <option value="highToLow">High to Low</option>
+        </select>
+        <button id="apply-filter-btn">Apply Filter</button>
+    </div>
+    <div id="product-list">
+        <div class="container">
+            <div class="row" id="product-row">
+                @await Html.PartialAsync("_ProductList", Model) <!-- Render the partial view for product cards -->
+            </div>
+        </div>
+    </div>
+    <div class="item_count">
+        <p>Showing <span id="product-count">@Model.Count</span> of <span id="product-total">@ViewBag.TotalCount</span> products</p>
+    </div>
+    <button id="load-more-btn">Load More</button>
+    <button id="scroll-to-top-btn">Scroll to Top</button>
+</body>
+</html>
+

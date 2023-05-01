@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewData["Title"] = "Home Page";
+}
+@section Scripts{
+    <script>
+        function loadPreviewImage() {
+            $.ajax({
+                url: '/GetRandomProductImage',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    var imageUrl = data[0].imageURL + '?t=' + new Date().getTime();
+                    $('#preview-box-image').attr('src', imageUrl);
+                    var imageUrl2 = data[1].imageURL + '?t=' + new Date().getTime();
+                    $('#preview-box-image2').attr('src', imageUrl2);
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log('Error: ' + textStatus + ' ' + errorThrown);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            loadPreviewImage();
+            setInterval(loadPreviewImage, 5000);
+        });
+    </script>
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1 class="page-heading">Welcome to Fashion Cataloge</h1>
+        </div>
+        <div>
+            <p>I have collected gone to diffrent fashion websites like BooHoo and collected their products to put into my data base</p>
+        </div>
+    </div>
+    <div class="card-flex">
+        <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+            <div class="card-header">Products</div>
+            <div class="card-body">
+                <h4 class="card-title">Wide range to choose  from</h4>
+                <p class="card-text">
+                    You will have access to a wide selection of unique products that have been gathered from leading fashion companies. It means that you will be able to
+                    locate something there that you enjoy, without having to go to multiple sites you have it all in one.
+                </p>
+            </div>
+        </div>
+        <div class="card border-primary mb-3" style="max-width: 20rem;">
+            <div class="card-header">Upcoming features</div>
+            <div class="card-body">
+                <h4 class="card-title">Updates for v1.5</h4>
+                <ul>
+                    <li class="card-text">Email alerts for sales</li>
+                    <li class="card-text">Colours avaliable for products</li>
+                    <li class="card-text">Image processing your clothes to get recommendations</li>
+                    <li class="card-text">More products from diffrent websites</li>
+                </ul>
+            </div>
+        </div>
+        <div id="preview-box-container">
+            <img id="preview-box-image" src="" alt="Preview Image">
+            <img id="preview-box-image2" src="" alt="Preview Image">
+        </div>
+    </div>
+</body>
+</html>

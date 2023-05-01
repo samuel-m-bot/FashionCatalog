@@ -1,0 +1,157 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+.container img {
+    height: 430px;
+    max-width: 100%;
+}
+.page-heading{
+    margin-top: 8rem;
+}
+.filter-options {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    text-align: end;
+}
+#scroll-to-top-btn {
+    background-color: #1f9bcf;
+    border-block-color: #1f9bcf;
+    border-radius: 4px;
+    color: white;
+}
+#scroll-to-top-btn:hover {
+    background-color: #197ca6;
+}
+label {
+    margin: 10px;
+}
+    .filter-options button {
+        padding: 0.4rem;
+        margin-left: 0.4rem;
+    }
+#scroll-to-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+}
+.card-flex {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+.card.text-white.bg-primary.mb-3 {
+    margin: 10px;
+}
+.card.border-primary.mb-3 {
+    margin: 10px;
+    margin-right: 20px;
+}
+#preview-box-image, #preview-box-image2 {
+    max-height: 320px;
+    max-width: 280px;
+}
+a:link {
+    text-decoration: none;
+}
+
+
+a:visited {
+    text-decoration: none;
+}
+
+
+a:hover {
+    text-decoration: none;
+}
+
+
+a:active {
+    text-decoration: none;
+}
+.product-price{
+    font-weight: bold;
+    font-size: 18px;
+    color: black;
+}
+.product-name{
+    margin-top: 1rem;
+}
+@media screen and (max-width: 767px) {
+    .col-md-4 {
+        max-width: 50%;
+        position: relative;
+        display: inline-block;
+        padding: 5px;
+    }
+    .container img {
+        max-height: 200px;
+    }
+    .filter-options select {
+        flex-basis: 100%;
+    }
+
+    .filter-options button {
+        margin-top: 10px;
+    }
+
+    label {
+        margin: 5px;
+    }
+
+    .product-price {
+        font-size: 15px;
+    }
+    /*    .col-md-4 img{
+        max-height: 180px;
+    }*/
+    .col-md-4 img {
+        height: auto;
+    }
+
+    product-details h4 {
+    }
+    /* apply styles to all child elements */
+    .col-md-4 * {
+        font-size: 14px; /* set a smaller font size */
+        line-height: 1.2; /* set a smaller line height */
+        padding: 5px; /* add smaller padding */
+    }
+
+    .card-flex {
+        justify-content: center; /* center horizontally */
+        align-items: center; /* center vertically */
+    }
+
+    #preview-box-image, #preview-box-image2 {
+        margin-left: 3.5rem;
+        margin-top: 5px;
+    }
+}
