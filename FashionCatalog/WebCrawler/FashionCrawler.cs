@@ -1,8 +1,8 @@
-﻿using FashionCatalog.Models;
+﻿using FashionCatalogue.Models;
 using HtmlAgilityPack;
 using Microsoft.Data.SqlClient;
 
-namespace FashionCatalog.WebCrawler
+namespace FashionCatalogue.WebCrawler
 {
     public class FashionCrawler
     {

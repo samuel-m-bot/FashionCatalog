@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FashionCatalog.Models
+namespace FashionCatalogue.Models
 {
     public class RegisterViewModel
     {

@@ -1,10 +1,10 @@
-﻿using FashionCatalog.Data;
-using FashionCatalog.Models;
+﻿using FashionCatalogue.Data;
+using FashionCatalogue.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace FashionCatalog.Controllers
+namespace FashionCatalogue.Controllers
 {
     [Route("[controller]")]
     public class AuthenticationController : Controller

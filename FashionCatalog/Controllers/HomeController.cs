@@ -1,11 +1,11 @@
-﻿using FashionCatalog.Data;
-using FashionCatalog.Models;
+﻿using FashionCatalogue.Data;
+using FashionCatalogue.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Text;
 
-namespace FashionCatalog.Controllers
+namespace FashionCatalogue.Controllers
 {
     [Route("")]
     public class HomeController : Controller

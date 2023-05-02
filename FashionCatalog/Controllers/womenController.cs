@@ -1,8 +1,8 @@
-﻿using FashionCatalog.Data;
-using FashionCatalog.Models;
+﻿using FashionCatalogue.Data;
+using FashionCatalogue.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FashionCatalog.Controllers
+namespace FashionCatalogue.Controllers
 {
     [Route("[controller]")]
     public class womenController : Controller

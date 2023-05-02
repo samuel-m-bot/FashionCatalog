@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using FashionCatalog.Data;
-using FashionCatalog;
+using FashionCatalogue.Data;
+using FashionCatalogue;
 using Microsoft.AspNetCore.Identity;
-using FashionCatalog.Areas.Identity.Data;
+using FashionCatalogue.Areas.Identity.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<FashionCatalogContext>(options =>

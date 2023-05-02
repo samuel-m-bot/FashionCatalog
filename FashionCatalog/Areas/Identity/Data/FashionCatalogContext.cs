@@ -1,12 +1,12 @@
-﻿using FashionCatalog.Areas.Identity.Data;
-using FashionCatalog.Models;
+﻿using FashionCatalogue.Areas.Identity.Data;
+using FashionCatalogue.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System.Reflection.Emit;
 
-namespace FashionCatalog.Data;
+namespace FashionCatalogue.Data;
 
 public class FashionCatalogContext : IdentityDbContext<FashionCatalogUser>
 {
@@ -14,7 +14,7 @@ public class FashionCatalogContext : IdentityDbContext<FashionCatalogUser>
         : base(options)
     {
     }
-    public DbSet<FashionCatalog.Models.Product> Products { get; set; } = default!;
+    public DbSet<FashionCatalogue.Models.Product> Products { get; set; } = default!;
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.Entity<Product>()

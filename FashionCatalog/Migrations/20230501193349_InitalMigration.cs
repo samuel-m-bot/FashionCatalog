@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace FashionCatalog.Migrations
+namespace FashionCatalogue.Migrations
 {
     /// <inheritdoc />
     public partial class InitalMigration : Migration

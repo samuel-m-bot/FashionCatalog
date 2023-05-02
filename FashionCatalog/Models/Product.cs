@@ -1,4 +1,4 @@
-﻿namespace FashionCatalog.Models
+﻿namespace FashionCatalogue.Models
 {
     public class Product
     {
