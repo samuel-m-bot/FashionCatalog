@@ -1,6 +1,6 @@
 ﻿@model List<Product>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "coats_jackets";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section Scripts{
@@ -25,21 +25,20 @@
             var skip = 40; // initial number of products to skip
             var take = 40; // number of products to take per batch
             var total = 40;
-            if (@ViewBag.TotalCount <= total) $('#load-more-btn').hide();
+            if (@ViewBag.TotalCount<= total) $('#load-more-btn').hide();
             // Load more button click event handler
             $('#load-more-btn').on('click', function () {
                 // Make an AJAX request to fetch more products with the selected filters
-                var category = $('#category-select').val();
                 var store = $('#store-select').val();
                 var price = $('#price-select').val();
 
                 $.ajax({
-                    url: '/women/GetProductsAll', // URL of your action method
+                    url: '/men/GetProducts', // URL of your action method
                     type: 'GET',
                     data: {
                         skip: skip,
                         take: take,
-                        category: category,
+                        category: "coats_jackets",
                         store: store,
                         price: price
                     },
@@ -49,12 +48,12 @@
                         $('.row:last-child').append(data);
 
                         $.ajax({
-                            url: '/women/GetProductsList', // URL of your action method
+                            url: '/men/GetProductsList', // URL of your action method
                             type: 'GET',
                             data: {
                                 skip: skip,
                                 take: take,
-                                category: category,
+                                category: "coats_jackets",
                                 store: store,
                                 price: price
                             },
@@ -85,7 +84,7 @@
             $('#apply-filter-btn').on('click', function () {
                 // Reset skip to 0 when applying filters
                 skip = 0;
-                total=0;
+                total = 0;
                 $('#product-row').empty(); // Clear existing products in the product list container
                 $('#load-more-btn').show(); // Show the "Load More" button
                 $('#load-more-btn').trigger('click'); // Trigger Load More button click to fetch products with filters
@@ -99,28 +98,15 @@
     <title>Index</title>
 </head>
 <body>
-    <h1 class="page-heading">Women Clothing list</h1>
+    <h1 class="page-heading">Men Coats & Jackets</h1>
     <div class="filter-options">
         <label for="store-select">Store:</label>
         <select id="store-select">
             <option value="">All</option>
             <option value="boohoo">boohoo</option>
-            <option value="PrettyLittleThing">PrettyLittleThing</option>
             <option value="Uniqlo">Uniqlo</option>
             <!-- Add more options for your stores -->
         </select>
-
-        <label for="category-select">Category:</label>
-        <select id="category-select">
-            <option value="">All</option>
-            <option value="dresses">dresses</option>
-            <option value="tops">tops</option>
-            <option value="coats_jackets">coats-jackets</option>
-            <option value="trousers">trousers</option>
-            <option value="jeans">jeans</option>
-            <!-- Add more options for your categories -->
-        </select>
-
         <label for="price-select">Price:</label>
         <select id="price-select">
             <option value="">All</option>
@@ -132,7 +118,7 @@
     <div id="product-list">
         <div class="container">
             <div class="row" id="product-row">
-                @await Html.PartialAsync("_ProductListAll", Model) <!-- Render the partial view for product cards -->
+                @await Html.PartialAsync("_ProductList", Model) <!-- Render the partial view for product cards -->
             </div>
         </div>
     </div>
@@ -143,5 +129,4 @@
     <button id="scroll-to-top-btn">Scroll to Top</button>
 </body>
 </html>
-
 

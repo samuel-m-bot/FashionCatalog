@@ -82,6 +82,20 @@ namespace FashionCatalog.Controllers
                   .ToList();
             return View(products);
         }
+        [Route("jeans")]
+        public IActionResult jeans()
+        {
+            int totalCount = _context.Products
+                  .Where(p => p.Sex == "women" && p.Category == "jeans")
+                  .ToList().Count();
+            ViewBag.TotalCount = totalCount;
+            var products = _context.Products
+                  .Where(p => p.Sex == "women" && p.Category == "jeans")
+                  .OrderBy(p => p.Name)
+                  .Take(40)
+                  .ToList();
+            return View(products);
+        }
         [Route("GetProductsAll")]
         public ActionResult GetProductsAll(int skip, int take, string category, string store, string price)
         {
