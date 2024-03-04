@@ -1,6 +1,6 @@
 # FashionCatalogue
 
-Hello, this project main parts are:
+Hello, the main parts of this project are:
 <br/>1)C# web crawler that store products into a database
 <br/>2)Website that acceses database
 <br/><br/>This website aims to provide you with an environment where you can access clothing items you like from all of the top fashion brands in one location. By doing this, you can find what you're looking for without having to visit multiple websites.
